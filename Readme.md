@@ -1,56 +1,42 @@
-# Panduan Penggabungan Tiga Arah (Three-Way Merge) di Git
+<div style="text-align:center;">
 
-## Deskripsi
-Panduan ini akan membantu Anda memahami langkah-langkah untuk melakukan penggabungan tiga arah (three-way merge) dalam Git. Tiga cara penggabungan umumnya terjadi ketika Anda memiliki dua cabang yang berbeda dan ingin menggabungkan perubahan dari kedua cabang tersebut ke dalam cabang target.
+# Fast Forward <br/>
+## **Rovines Derlan Hutabarat**
 
-## Langkah-Langkah
+</div>
 
-1. **Pastikan Anda Sudah Terbaru:**
-    Sebelum Anda mulai penggabungan, pastikan repositori Anda sudah terbaru dengan menjalankan perintah berikut:
+1. **Buat Folder Baru**
+
+2. **Inisialisasi git**
     ```bash
-    git fetch origin
-    git checkout <cabang_target>
-    git pull origin <cabang_target>
+    git init
     ```
-
-2. **Mulai Penggabungan:**
-    Pindah ke cabang target yang ingin Anda gabungkan perubahan ke dalamnya:
+3. **Buat File Readme.MD Pada Folder Yang Telah Dibuat**
+4. **Tambahkan Text Pada File Readme**
+5. **Tambahkan Branch Parent Dan Child**
     ```bash
-    git checkout <cabang_target>
+    git checkout -b ParentRovines
+    git checkout -b ChildRovines
     ```
-    Kemudian, gabungkan perubahan dari cabang sumber dengan menggunakan perintah:
+6. **Pindah Ke Branch Child**
     ```bash
-    git merge <cabang_sumber>
+    git checkout ChildRovines
     ```
-
-3. **Pemecahan Konflik (Jika Ada):**
-    Jika Git menemukan konflik, ini berarti ada bagian dari kode yang berubah di kedua cabang dan perlu disesuaikan secara manual. Git akan menandai file-file yang bermasalah. Anda perlu membuka file-file tersebut menggunakan editor teks dan menyelesaikan konfliknya.
-
-4. **Tambahkan Perubahan yang Diselesaikan:**
-    Setelah Anda menyelesaikan konflik dan menyunting file-file yang terlibat, tandai bahwa konflik tersebut telah diselesaikan dengan menggunakan perintah:
+7. **Push Perubahan Ke Local Staging Area**
     ```bash
-    git add <file_yang_diubah>
+    git add .
+    git commit -m "commit 1"
     ```
-
-5. **Selesaikan Penggabungan:**
-    Lanjutkan proses penggabungan dengan menyelesaikannya:
+8. **Cek Perbedaan File Di Parent branch dan Child Branch**
     ```bash
-    git merge --continue
+    git checkout ParentRovines
+    git checkout ChildRovines
     ```
-
-6. **Uji Coba dan Periksa:**
-    Setelah penggabungan selesai, pastikan untuk menguji apakah kode berfungsi dengan baik dan tidak ada konflik yang belum terselesaikan.
-
-7. **Commit Hasil Merge:**
-    Jika semuanya telah berhasil, lakukan commit untuk hasil penggabungan:
+9. **Lakukan Merge Ketika Posisi branch ada di Parent branch**
     ```bash
-    git commit -m "Merge <cabang_sumber> into <cabang_target>"
+    git merge ChildRovines
     ```
-
-8. **Dorong Perubahan ke Repositori Remote:**
-    Terakhir, dorong perubahan ke repositori remote agar perubahan tersimpan secara online:
+10. **Push Ke Repository Github**
     ```bash
-    git push origin <cabang_target>
+    git push origin ParentRovines
     ```
-
-Dengan mengikuti langkah-langkah ini, Anda dapat melakukan penggabungan tiga arah (three-way merge) dengan lancar dalam Git.
