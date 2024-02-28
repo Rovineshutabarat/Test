@@ -1,41 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Penggabungan Tiga Arah (Three-Way Merge) di Git</title>
-</head>
-<body>
-    <h1>Panduan Penggabungan Tiga Arah (Three-Way Merge) di Git</h1>
+# Panduan Penggabungan Tiga Arah (Three-Way Merge) di Git
 
-    <h2>Deskripsi</h2>
-    <p>
-        Panduan ini akan membantu Anda memahami langkah-langkah untuk melakukan penggabungan tiga arah (three-way merge) dalam Git. Tiga cara penggabungan umumnya terjadi ketika Anda memiliki dua cabang yang berbeda dan ingin menggabungkan perubahan dari kedua cabang tersebut ke dalam cabang target.
-    </p>
+## Deskripsi
+Panduan ini akan membantu Anda memahami langkah-langkah untuk melakukan penggabungan tiga arah (three-way merge) dalam Git. Tiga cara penggabungan umumnya terjadi ketika Anda memiliki dua cabang yang berbeda dan ingin menggabungkan perubahan dari kedua cabang tersebut ke dalam cabang target.
 
-    <h2>Langkah-Langkah</h2>
-    <ol>
-        <li>
-            <strong>Pastikan Anda Sudah Terbaru:</strong>
-            <p>
-                Sebelum Anda mulai penggabungan, pastikan repositori Anda sudah terbaru dengan menjalankan perintah berikut:
-            </p>
-            <pre><code>git fetch origin
-git checkout &lt;cabang_target&gt;
-git pull origin &lt;cabang_target&gt;</code></pre>
-        </li>
-        <li>
-            <strong>Mulai Penggabungan:</strong>
-            <p>
-                Pindah ke cabang target yang ingin Anda gabungkan perubahan ke dalamnya:
-            </p>
-            <pre><code>git checkout &lt;cabang_target&gt;</code></pre>
-            <p>
-                Kemudian, gabungkan perubahan dari cabang sumber dengan menggunakan perintah:
-            </p>
-            <pre><code>git merge &lt;cabang_sumber&gt;</code></pre>
-        </li>
-        <!-- Sisanya langkah-langkah lainnya -->
-    </ol>
-</body>
-</html>
+## Langkah-Langkah
+
+1. **Pastikan Anda Sudah Terbaru:**
+    Sebelum Anda mulai penggabungan, pastikan repositori Anda sudah terbaru dengan menjalankan perintah berikut:
+    ```bash
+    git fetch origin
+    git checkout <cabang_target>
+    git pull origin <cabang_target>
+    ```
+
+2. **Mulai Penggabungan:**
+    Pindah ke cabang target yang ingin Anda gabungkan perubahan ke dalamnya:
+    ```bash
+    git checkout <cabang_target>
+    ```
+    Kemudian, gabungkan perubahan dari cabang sumber dengan menggunakan perintah:
+    ```bash
+    git merge <cabang_sumber>
+    ```
+
+3. **Pemecahan Konflik (Jika Ada):**
+    Jika Git menemukan konflik, ini berarti ada bagian dari kode yang berubah di kedua cabang dan perlu disesuaikan secara manual. Git akan menandai file-file yang bermasalah. Anda perlu membuka file-file tersebut menggunakan editor teks dan menyelesaikan konfliknya.
+
+4. **Tambahkan Perubahan yang Diselesaikan:**
+    Setelah Anda menyelesaikan konflik dan menyunting file-file yang terlibat, tandai bahwa konflik tersebut telah diselesaikan dengan menggunakan perintah:
+    ```bash
+    git add <file_yang_diubah>
+    ```
+
+5. **Selesaikan Penggabungan:**
+    Lanjutkan proses penggabungan dengan menyelesaikannya:
+    ```bash
+    git merge --continue
+    ```
+
+6. **Uji Coba dan Periksa:**
+    Setelah penggabungan selesai, pastikan untuk menguji apakah kode berfungsi dengan baik dan tidak ada konflik yang belum terselesaikan.
+
+7. **Commit Hasil Merge:**
+    Jika semuanya telah berhasil, lakukan commit untuk hasil penggabungan:
+    ```bash
+    git commit -m "Merge <cabang_sumber> into <cabang_target>"
+    ```
+
+8. **Dorong Perubahan ke Repositori Remote:**
+    Terakhir, dorong perubahan ke repositori remote agar perubahan tersimpan secara online:
+    ```bash
+    git push origin <cabang_target>
+    ```
+
+Dengan mengikuti langkah-langkah ini, Anda dapat melakukan penggabungan tiga arah (three-way merge) dengan lancar dalam Git.
